@@ -3,7 +3,7 @@ import { createTransport } from "nodemailer"
 import crypto from "crypto"
 import bcrypt from "bcrypt"
 import dotenv from "dotenv"
-dotenv.config()
+dotenv.config({path: './.env'})
 
 // Route to handle "forgot password" request
 const forgotPassword = async (req, res) => {

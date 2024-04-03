@@ -8,7 +8,7 @@ import taskRouter from "./routes/taskRoute.js"
 import forgotPasswordRouter from "./routes/forgotPassword.js"
 
 //app config
-dotenv.config()
+dotenv.config({path: './.env'})
 const app = express()
 const port = process.env.PORT || 8001
 mongoose.set('strictQuery', true);
