@@ -4,7 +4,7 @@ files:
   - source: /
     destination: ~/project/docker_practice/
     overwrite: true
-file_exists_behavior: OVERWRITE
+file_exists_behavior: RETAIN
 permissions:
   - object: /
     owner: ec2-user
