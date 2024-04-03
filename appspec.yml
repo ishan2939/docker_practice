@@ -15,6 +15,6 @@ hooks:
     timeout: 300
     runas: root
   ApplicationStart:
-    - location: ~/../home/ec2-user/project/scripts/start_server.sh
-      timeout: 300
-      runas: root
+  - location: ~/../home/ec2-user/project/scripts/start_server.sh
+    timeout: 300
+    runas: root
