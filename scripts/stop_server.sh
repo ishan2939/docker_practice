@@ -1,3 +1,3 @@
 #!/bin/bash
-cd ~/home/ec2-user/project
+cd ~/project
 docker-compose down
