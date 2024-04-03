@@ -11,10 +11,10 @@ permissions:
     mode: 777
 hooks:
   ApplicationStop:
-  - location: ./scripts/stop_server.sh
+  - location: /home/ec2-user/project/scripts/stop_server.sh
     timeout: 300
     runas: root
   ApplicationStart:
-    - location: ./scripts/start_server.sh
+    - location: /home/ec2-user/project/scripts/start_server.sh
       timeout: 300
       runas: root
