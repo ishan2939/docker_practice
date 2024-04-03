@@ -2,7 +2,7 @@ import taskModel from "../models/taskModel.js";
 import userModel from "../models/userModel.js";
 import { createTransport } from 'nodemailer';
 import dotenv from "dotenv";
-dotenv.config({path: './.env'})
+dotenv.config({path: './../.env'})
 const sendMail = (email, subject, title, description) => {
     var transporter = createTransport({
         service: 'gmail',
