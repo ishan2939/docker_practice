@@ -5,7 +5,7 @@ files:
     destination: /
 file_exists_behavior: OVERWRITE
 permissions:
-  - object: /
+  - object: scripts/start_server.sh
     owner: root
     group: root
     mode: 777
