@@ -2,8 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: ~/project/docker_practice/
-    overwrite: true
+    destination: ~/project
     file_exists_behavior: OVERWRITE
 permissions:
   - object: /
