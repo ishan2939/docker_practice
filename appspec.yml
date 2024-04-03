@@ -3,7 +3,7 @@ os: linux
 files:
   - source: /
     destination: ~/../home/ec2-user/project
-    file_exists_behavior: OVERWRITE
+file_exists_behavior: OVERWRITE
 permissions:
   - object: /
     owner: root
