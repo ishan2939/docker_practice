@@ -3,6 +3,7 @@ os: linux
 files:
   - source: /
     destination: ~/project/docker_practice/
+file_exists_behavior: OVERWRITE
 permissions:
   - object: /
     owner: ec2-user
