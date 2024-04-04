@@ -15,6 +15,7 @@ services:
 
   backend:
     build: backend
+    image: backend
     container_name: backend
     ports: 
       - 8000:8000
@@ -25,6 +26,7 @@ services:
     
   frontend:
     build: frontend
+    image: frontend
     container_name: react
     ports: 
       - 3000:3000
