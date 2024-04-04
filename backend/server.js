@@ -11,7 +11,9 @@ import getParameter from "./utils/getParameter.js"
 //app config
 dotenv.config({path: './.env'})
 const app = express()
+
 const port = await getParameter('PORT') || 8001
+
 mongoose.set('strictQuery', true);
 
 //middlewares
