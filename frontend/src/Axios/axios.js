@@ -1,5 +1,6 @@
 import axios from "axios"
+import getParameter from "../../utils/getParameter"
 const instance = axios.create({
-    baseURL:"http://52.204.201.42:8000/api"
+    baseURL: await getParameter('BACKEND_URL_ISHAN')
 })
 export default instance

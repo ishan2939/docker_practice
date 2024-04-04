@@ -4,8 +4,8 @@ import bcrypt from "bcrypt";
 import validator from "validator";
 
 //create token
-const createToken = (id) => {
-    return jwt.sign({id}, process.env.JWT_SECRET, {
+const createToken = async (id) => {
+    return jwt.sign({id}, await getParameter('JWT_SECRET'), {
         expiresIn: 3 * 24 * 60 * 60
     })
 }
@@ -27,7 +27,7 @@ const loginUser = async (req,res) => {
         if(!isMatch){
             return res.status(400).json({message: "Invalid credentials"})
         }
-        const token = createToken(user._id)
+        const token = await createToken(user._id)
         res.status(200).json({user,token})
     } catch (error) {
         res.status(500).json({message: error.message})
@@ -57,7 +57,7 @@ const registerUser = async (req,res) => {
 
         const newUser = new userModel({name, email, password: hashedPassword})
         const user = await newUser.save()
-        const token = createToken(user._id)
+        const token = await createToken(user._id)
         res.status(200).json({user,token})
 
     } catch(error){
