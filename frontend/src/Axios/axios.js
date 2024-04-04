@@ -1,5 +1,5 @@
 import axios from "axios"
-import getParameter from "../../utils/getParameter"
+import getParameter from "../utils/getParameter"
 const instance = axios.create({
     baseURL: await getParameter('BACKEND_URL_ISHAN')
 })
