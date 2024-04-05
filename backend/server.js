@@ -20,7 +20,7 @@ app.use(cors())
 
 let MONGO_URI, port;
 
-(async () => {
+await (async () => {
     try {
         MONGO_URI = await getParameter('MONGO_URI');
         port = await getParameter('PORT') || 8001;
