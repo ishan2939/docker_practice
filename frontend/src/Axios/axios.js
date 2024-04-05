@@ -1,5 +1,5 @@
 import axios from "axios"
-import getParameter from "../utils/getParameter"
+
 
 // let url;
 // (async ()=>{
