@@ -9,10 +9,8 @@ import forgotPasswordRouter from "./routes/forgotPassword.js"
 import getParameter from "./utils/getParameter.js"
 
 //app config
-dotenv.config({path: './.env'})
+dotenv.config({ path: './.env' })
 const app = express()
-
-const port = await getParameter('PORT') || 8001
 
 mongoose.set('strictQuery', true);
 
@@ -20,16 +18,26 @@ mongoose.set('strictQuery', true);
 app.use(express.json())
 app.use(cors())
 
-//db config
-mongoose.connect(await getParameter('MONGO_URI'), {
-    useNewUrlParser: true,
-}, (err) => {
-    if (err) {
-        console.log(err)
-    } else {
-        console.log("DB Connected")
+let MONGO_URI, port;
+
+(async () => {
+    try {
+        MONGO_URI = await getParameter('MONGO_URI');
+        port = await getParameter('PORT') || 8001;
+        mongoose.connect(MONGO_URI, {
+            useNewUrlParser: true,
+        }, (err) => {
+            if (err) {
+                console.log(err)
+            } else {
+                console.log("DB Connected")
+            }
+        })
+    } catch (err) {
+        console.log("An error occured: " + err.message);
     }
-})
+})();
+
 
 //api endpoints
 app.use("/api/user", userRouter)

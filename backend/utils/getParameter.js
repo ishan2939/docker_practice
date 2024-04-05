@@ -9,7 +9,6 @@ export default async function getParameter(parameterName) {
     const params = {
         Name: 'arn:aws:ssm:us-east-1:654654485151:parameter/' + parameterName,
         WithDecryption: true,
-
     };
 
     try {
