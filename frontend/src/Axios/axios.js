@@ -12,7 +12,7 @@ import axios from "axios"
 // })();
 
 const instance = axios.create({
-    baseURL: "http://54.237.223.158:8000/api"
+    baseURL: "http://54.152.2.141:8000/api"
 })
 
 // const instance = (async () => {
