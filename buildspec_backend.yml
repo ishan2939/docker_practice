@@ -1,0 +1,13 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/s0z9h6z8
+  build:
+    commands:
+      - docker build -t my_todo_backend:latest ./backend/
+      - docker tag my_todo_backend:latest public.ecr.aws/s0z9h6z8/my_todo_backend:latest
+  post_build:
+    commands:
+      - docker push public.ecr.aws/s0z9h6z8/my_todo_backend:latest
