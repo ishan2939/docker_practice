@@ -14,8 +14,7 @@ services:
       - my_network
 
   backend:
-    build: backend
-    image: backend
+    image: public.ecr.aws/s0z9h6z8/my_todo_backend:latest
     container_name: backend
     ports: 
       - 8000:8000
@@ -25,8 +24,7 @@ services:
       - my_network
     
   frontend:
-    build: frontend
-    image: frontend
+    image: public.ecr.aws/s0z9h6z8/my_todo_backend:latest
     container_name: react
     ports: 
       - 3000:3000
