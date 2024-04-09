@@ -22,8 +22,8 @@ let MONGO_URI, port;
 
 await (async () => {
     try {
-        MONGO_URI = await getParameter('MONGO_URI_ISHAN');
         port = await getParameter('PORT') || 8001;
+        MONGO_URI = await getParameter('MONGO_URI_ISHAN');
         mongoose.connect(MONGO_URI, {
             useNewUrlParser: true,
         }, (err) => {
