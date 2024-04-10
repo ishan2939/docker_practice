@@ -15,4 +15,4 @@ phases:
   
 artifacts:
   files: 
-    - imagedefinitionsbackend.json
+    - MyImagedefinitionsbackend.json
