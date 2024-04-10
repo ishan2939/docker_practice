@@ -12,7 +12,7 @@ import axios from "axios"
 // })();
 
 const instance = axios.create({
-    baseURL: "http://44.193.84.212:8000/api"
+    baseURL: "http://MyTodoALB-1370739494.us-east-1.elb.amazonaws.com:8000/api"
 })
 
 // const instance = (async () => {
