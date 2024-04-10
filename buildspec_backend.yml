@@ -6,8 +6,13 @@ phases:
       - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/s0z9h6z8
   build:
     commands:
-      - docker build -t my_todo_backend:latest ./backend/
-      - docker tag my_todo_backend:latest public.ecr.aws/s0z9h6z8/my_todo_backend:latest
+      - docker build -t to_do_backend:latest ./backend/
+      - docker tag to_do_backend:latest public.ecr.aws/s0z9h6z8/to_do_backend:latest
+      - printf '[{"name":"backend","imageUri":"public.ecr.aws/s0z9h6z8/to_do_backend"}]' public.ecr.aws/s0z9h6z8/to_do_backend:latest > $CODEBUILD_SRC_DIR/imagedefinitionsbackend.json
   post_build:
     commands:
-      - docker push public.ecr.aws/s0z9h6z8/my_todo_backend:latest
+      - docker push public.ecr.aws/s0z9h6z8/to_do_backend:latest
+  
+artifacts:
+  files: 
+    - imagedefinitionsbackend.json
