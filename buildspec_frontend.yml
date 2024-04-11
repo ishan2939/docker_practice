@@ -8,7 +8,7 @@ phases:
     commands:
       - docker build -t my_todo_frontend:latest ./frontend/
       - docker tag my_todo_frontend:latest public.ecr.aws/s0z9h6z8/my_todo_frontend:latest
-      - printf '[{"name":"frontend","imageUri":"public.ecr.aws/s0z9h6z8/my_todo_frontend"}]' public.ecr.aws/s0z9h6z8/my_todo_frontend:latest > $CODEBUILD_SRC_DIR/MyImagedefinitionsfrontend.json
+      - printf '[{"name":"Frontend_service","imageUri":"public.ecr.aws/s0z9h6z8/my_todo_frontend"}]' public.ecr.aws/s0z9h6z8/my_todo_frontend:latest > $CODEBUILD_SRC_DIR/MyImagedefinitionsfrontend.json
     commands:
       - docker push public.ecr.aws/s0z9h6z8/my_todo_frontend:latest
 
