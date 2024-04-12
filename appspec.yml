@@ -3,28 +3,7 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: "arn:aws:ecs:us-east-1:654654485151:task-definition/My_todo_task_definition_Frontend:6"
+        TaskDefinition: <TASK_DEFINITION>
         LoadBalancerInfo:
           ContainerName: "react"
           ContainerPort: 3000
-        PlatformVersion: "LATEST"
-
-os: linux
-files:
-  - source: /
-    destination: /
-file_exists_behavior: OVERWRITE
-permissions:
-  - object: /
-    owner: root
-    group: root
-    mode: 777
-hooks:
-  ApplicationStop:
-  - location: ./scripts/stop_server.sh
-    timeout: 300
-    runas: root
-  ApplicationStart:
-  - location: ./scripts/start_server.sh
-    timeout: 3000
-    runas: root
