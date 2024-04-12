@@ -3,7 +3,7 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: <TASK_DEFINITION>
+        TaskDefinition: "arn:aws:ecs:us-east-1:654654485151:task-definition/My_todo_task_definition_Frontend:6"
         LoadBalancerInfo:
           ContainerName: "react"
           ContainerPort: 3000
