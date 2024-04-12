@@ -11,11 +11,11 @@ phases:
   post_build:
     commands:
       - docker push public.ecr.aws/s0z9h6z8/my_todo_backend:latest
-      - printf '{"ImageURI":"%s"}' $REPOSITORY_URI:$IMAGE_TAG > imageDetailBackend.json
+      - printf '{"ImageURI":"%s"}' public.ecr.aws/s0z9h6z8/my_todo_backend:latest > imageDetailBackend.json
 artifacts:
   files: 
-    - 'image*.json'
-    - 'appspec.yml'
+    - image*.json
+    - appspec.yml
   secondary-artifacts:
     DefinitionArtifact:
       files:

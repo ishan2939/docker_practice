@@ -10,11 +10,11 @@ phases:
       - docker tag my_todo_frontend:latest public.ecr.aws/s0z9h6z8/my_todo_frontend:latest
     commands:
       - docker push public.ecr.aws/s0z9h6z8/my_todo_frontend:latest
-      - printf '{"ImageURI":"%s"}' $REPOSITORY_URI:$IMAGE_TAG > imageDetailFrontend.json
+      - printf '{"ImageURI":"%s"}' public.ecr.aws/s0z9h6z8/my_todo_frontend:latest > imageDetailFrontend.json
 artifacts:
   files: 
-    - 'image*.json'
-    - 'appspec.yml'
+    - image*.json
+    - appspec.yml
   secondary-artifacts:
     DefinitionArtifact:
       files:
