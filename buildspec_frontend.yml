@@ -11,10 +11,10 @@ phases:
   post_build:
     commands:
       - docker push public.ecr.aws/s0z9h6z8/my_todo_frontend:latest
-      - printf '[{"name":"react","imageUri":"%s"}]' public.ecr.aws/s0z9h6z8/my_todo_frontend:latest > imageDetailFrontend.json
-      - aws ecs describe-task-definition --task-definition public.ecr.aws/s0z9h6z8/my_todo_frontend:latest --region us-east-1 | jq .taskDefinition > taskdef.json
+      - printf '[{"name":"react","imageUri":"%s"}]' public.ecr.aws/s0z9h6z8/my_todo_frontend:latest > imagedefinitions.json
+      - aws ecs describe-task-definition --task-definition arn:aws:ecs:us-east-1:654654485151:task-definition/My_todo_task_definition_Frontend:latest --region us-east-1 | jq .taskDefinition > taskdef.json
 artifacts:
   files: 
-    - imageDetailFrontend.json
+    - imagedefinitions.json
     - appspec.yml
     - taskdef.json
