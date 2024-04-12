@@ -43,9 +43,11 @@ const addTask = async (req, res) => {
     newTask.save()
         .then(() => {
             sendMail(user[0].email, "Task Added", title, description)
+            console.log("----------------------->", "task added successfully");
             return (res.status(200).json({ message: "Task added successfully" }))
         })
         .catch((error) => {
+            console.log("----------------------->", "An error occured while adding the task");
             return (
                 res.status(500).json({ message: error.message })
             )
@@ -56,13 +58,25 @@ const removeTask = (req, res) => {
     const { id } = req.body;
     console.log("id: ", id);
     taskModel.findByIdAndDelete(id)
-        .then(() => res.status(200).json({ message: "Task deleted successfully" }))
-        .catch((error) => res.status(501).json({ message: error.message }))
+        .then(() => {
+            console.log("----------------------->", "task removed successfully");
+            res.status(200).json({ message: "Task deleted successfully" });
+        })
+        .catch((error) => {
+            console.log("----------------------->", "An error occured while removing the task");
+            res.status(501).json({ message: error.message });
+        })
 }
 
 const getTask = (req, res) => {
     taskModel.find({ userId: req.user.id })
-        .then((data) => res.status(200).json(data))
-        .catch((error) => res.status(501).json({ message: error.message }))
+        .then((data) => {
+            console.log("----------------------->", "task fetched successfully");
+            res.status(200).json(data);
+        })
+        .catch((error) => {
+            console.log("----------------------->", "An error occured while fetching the task");
+            res.status(501).json({ message: error.message });
+        })
 }
 export { addTask, getTask, removeTask }

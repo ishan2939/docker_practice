@@ -28,9 +28,11 @@ const loginUser = async (req,res) => {
         if(!isMatch){
             return res.status(400).json({message: "Invalid credentials"})
         }
-        const token = await createToken(user._id)
+        const token = await createToken(user._id);
+        console.log("----------------------->", "logged in successfully");
         res.status(200).json({user,token})
     } catch (error) {
+        console.log("----------------------->", "error occured while trying to log in");
         res.status(500).json({message: error.message})
     }
 }
@@ -58,10 +60,12 @@ const registerUser = async (req,res) => {
 
         const newUser = new userModel({name, email, password: hashedPassword})
         const user = await newUser.save()
-        const token = await createToken(user._id)
+        const token = await createToken(user._id);
+        console.log("----------------------->", "registered successfully");
         res.status(200).json({user,token})
 
     } catch(error){
+        console.log("----------------------->", "An error occured while trying to register.");
         res.status(500).json({message: error.message})
     }
 }
