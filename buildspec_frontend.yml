@@ -8,10 +8,20 @@ phases:
     commands:
       - docker build -t my_todo_frontend:latest ./frontend/
       - docker tag my_todo_frontend:latest public.ecr.aws/s0z9h6z8/my_todo_frontend:latest
-      - printf '[{"name":"react","imageUri":"public.ecr.aws/s0z9h6z8/my_todo_frontend"}]' public.ecr.aws/s0z9h6z8/my_todo_frontend:latest > $CODEBUILD_SRC_DIR/MyImagedefinitionsfrontend.json
+      - printf '[{"name":"react","imageUri":"public.ecr.aws/s0z9h6z8/my_todo_frontend"}]' public.ecr.aws/s0z9h6z8/my_todo_frontend:latest > $CODEBUILD_SRC_DIR/imageDetailFrontend.json
     commands:
       - docker push public.ecr.aws/s0z9h6z8/my_todo_frontend:latest
 
 artifacts:
   files: 
-    - MyImagedefinitionsfrontend.json
+    - 'image*.json'
+    - 'appspec.yaml'
+    - 'taskdef.json'
+  secondary-artifacts:
+    DefinitionArtifact:
+      files:
+        - appspec.yaml
+        - taskdef.json
+    ImageArtifact:
+      files:
+        - imageDetailFrontend.json

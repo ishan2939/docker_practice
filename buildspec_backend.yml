@@ -8,11 +8,21 @@ phases:
     commands:
       - docker build -t my_todo_backend:latest ./backend/
       - docker tag my_todo_backend:latest public.ecr.aws/s0z9h6z8/my_todo_backend:latest
-      - printf '[{"name":"backend","imageUri":"public.ecr.aws/s0z9h6z8/my_todo_backend"}]' public.ecr.aws/s0z9h6z8/my_todo_backend:latest > $CODEBUILD_SRC_DIR/MyImagedefinitionsbackend.json
+      - printf '[{"name":"backend","imageUri":"public.ecr.aws/s0z9h6z8/my_todo_backend"}]' public.ecr.aws/s0z9h6z8/my_todo_backend:latest > $CODEBUILD_SRC_DIR/imageDetailBackend.json
   post_build:
     commands:
       - docker push public.ecr.aws/s0z9h6z8/my_todo_backend:latest
   
 artifacts:
   files: 
-    - MyImagedefinitionsbackend.json
+    - 'image*.json'
+    - 'appspec.yaml'
+    - 'taskdef.json'
+  secondary-artifacts:
+    DefinitionArtifact:
+      files:
+        - appspec.yaml
+        - taskdef.json
+    ImageArtifact:
+      files:
+        - imageDetailBackend.json
