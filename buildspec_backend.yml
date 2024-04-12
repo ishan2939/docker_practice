@@ -14,12 +14,5 @@ phases:
       - printf '{"ImageURI":"%s"}' public.ecr.aws/s0z9h6z8/my_todo_backend:latest > imageDetailBackend.json
 artifacts:
   files: 
-    - image*.json
+    - imageDetailBackend.json
     - appspec.yml
-  secondary-artifacts:
-    DefinitionArtifact:
-      files:
-        - appspec.yml
-    ImageArtifact:
-      files:
-        - imageDetailBackend.json
