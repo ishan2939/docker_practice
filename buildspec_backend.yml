@@ -11,7 +11,7 @@ phases:
   post_build:
     commands:
       - docker push public.ecr.aws/s0z9h6z8/my_todo_backend:latest
-      - printf '[{"name":"backend","imageUri":"%s"}]' public.ecr.aws/s0z9h6z8/my_todo_backend:latest > imagedefinitionsbackend.json
+      - printf '[{"name":"backend","imageUri":"%s"}]' public.ecr.aws/s0z9h6z8/my_todo_backend:latest > $CODEBUILD_SRC_DIR/imagedefinitionsbackend.json
       - aws ecs describe-task-definition --task-definition My_todo_task_definition_Backend --region us-east-1 | jq .taskDefinition > taskdefbackend.json
       - cat taskdefbackend.json
       - cat taskdefbackend.json | jq 'walk(if type == "array" and length == 0 then null else . end)' > taskdefbackend.json
