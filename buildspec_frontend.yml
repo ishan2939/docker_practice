@@ -11,11 +11,13 @@ phases:
   post_build:
     commands:
       - docker push public.ecr.aws/s0z9h6z8/my_todo_frontend:latest
-      - printf '[{"name":"react","imageUri":"%s"}]' public.ecr.aws/s0z9h6z8/my_todo_frontend:latest > imagedefinitions.json
-      - aws ecs describe-task-definition --task-definition My_todo_task_definition_Frontend --region us-east-1 | jq .taskDefinition > taskdef.json
-      - cat taskdef.json | jq 'walk(if type == "array" and length == 0 then null else . end)' > taskdef.json
+      - printf '[{"name":"react","imageUri":"%s"}]' public.ecr.aws/s0z9h6z8/my_todo_frontend:latest > imagedefinitionsfrontend.json
+      - aws ecs describe-task-definition --task-definition My_todo_task_definition_Frontend --region us-east-1 | jq .taskDefinition > taskdeffrontnend.json
+      - cat taskdeffrontnend.json
+      - cat taskdeffrontnend.json | jq 'walk(if type == "array" and length == 0 then null else . end)' > taskdeffrontnend.json
+      - cat taskdeffrontnend.json
 artifacts:
   files: 
-    - imagedefinitions.json
+    - imagedefinitionsfrontend.json
     - appspec_frontend.yaml
-    - taskdef.json
+    - taskdeffrontnend.json
